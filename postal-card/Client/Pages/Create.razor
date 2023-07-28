@@ -12,14 +12,58 @@
             <div class="col mb-5"><img class="rounded img-fluid shadow" src="assets/img/happypic.jpg"></div>
             <div class="col d-md-flex align-items-md-end align-items-lg-center mb-5">
                 <div>
-                    <h5 class="fw-bold">Chose your memory to share:</h5>
-                    <p class="text-muted mb-4"><input type="file"></p><button class="btn btn-primary shadow" type="button">Send</button>
+                    <h5 class="fw-bold">Choose your memory to share:</h5>
+                    <p class="text-muted mb-4">
+
+
+                        <InputFile OnChange="@OnInputFileChange" />
+                    </p>
+                    @if (!string.IsNullOrEmpty(imageBase64))
+                    {
+                        <a href="data:@imageMimeType;base64,@imageBase64" download="user_image.jpg">Download your image</a>
+                        <img src="@("data:image/png;base64," + imageBase64)" alt="Image" width="400" />
+                        <button class="btn btn-primary shadow" type="button" @onclick="(() => GeneratePdf())">Get Postcard</button>
+                    }
+
                 </div>
             </div>
         </div>
     </div>
 </section>
 
+@inject IJSRuntime JSRuntime
 @code {
+    private string imageBase64;
+    private string imageMimeType;
+    private const int MaxImageSize = 5 * 1024 * 1024; // e.g., 5 MB
 
+    async Task OnInputFileChange(InputFileChangeEventArgs e)
+    {
+        var imageFile = e.File;
+
+        if (imageFile != null && imageFile.Size <= MaxImageSize)
+        {
+            var buffer = new byte[imageFile.Size];
+
+            await imageFile.OpenReadStream(MaxImageSize).ReadAsync(buffer);
+
+            imageMimeType = imageFile.ContentType;
+            imageBase64 = Convert.ToBase64String(buffer);
+        }
+    }
+    async Task DownloadCard()
+    {
+
+        // Convert your image to Base64 (if it isn't already)
+        // Then call the JS function
+        await JSRuntime.InvokeVoidAsync("generatePDF", imageBase64);
+
+    }
+    private async Task GeneratePdf()
+    {
+        string base64Image = imageBase64;  // Replace with your image's base64 string
+        await JSRuntime.InvokeVoidAsync("createPdfFromBase64Image", base64Image);
+    }
 }
+
+

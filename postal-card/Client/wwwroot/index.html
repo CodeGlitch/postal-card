@@ -56,6 +56,23 @@
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bold-and-bright.js"></script>
 
+    <!-- PDF stuff -->
+    <script src="assets/js/jspdf.umd.min.2.5.1.js"></script>
+    <script type="text/javascript">
+        window.jsPDF = window.jspdf.jsPDF;
+        function generatePDF(base64Image) {
+            const doc = new jsPDF();
+            doc.addImage(base64Image, 'JPEG', 10, 10);
+            doc.save('generated-postcard.pdf');
+        }
+
+        window.createPdfFromBase64Image = (base64Image) => {
+            const doc = new jsPDF();
+            doc.addImage(base64Image, 'JPEG', 10, 10, 180, 160);  // Adjust dimensions as needed
+            doc.save("sample.pdf");
+        }
+
+    </script>
 </body>
 
 </html>
