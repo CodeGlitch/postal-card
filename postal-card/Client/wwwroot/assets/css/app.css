@@ -99,3 +99,97 @@ a, .btn-link {
     .loading-progress-text:after {
         content: var(--blazor-load-percentage-text, "Loading");
     }
+
+
+
+.postcard {
+    width: 105mm; /* A6 width */
+    height: 148mm; /* A6 height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    padding: 10px;
+}
+
+    .postcard img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+.postcard-Gray {
+    background: repeating-linear-gradient( to bottom, LightGray 0, LightGray 5mm, /* stripe height */
+    #ffffff 5mm, #ffffff 10mm /* double the stripe height for spacing */
+    );
+    /*doc.setFillColor(220); // Light gray*/
+}
+
+.postcard-Red {
+    background: repeating-linear-gradient( to bottom, red 0, red 5mm, /* stripe height */
+    #ffffff 5mm, #ffffff 10mm /* double the stripe height for spacing */
+    );
+    /*doc.setFillColor(255, 0, 0); // Red*/
+}
+
+.postcard-Green {
+    background: repeating-linear-gradient( to bottom, green 0, green 5mm, /* stripe height */
+    #ffffff 5mm, #ffffff 10mm /* double the stripe height for spacing */
+    );
+    /*doc.setFillColor(0, 255, 0); // Green*/
+}
+
+.postcard-Blue {
+    background: repeating-linear-gradient( to bottom, blue 0, blue 5mm, /* stripe height */
+    #ffffff 5mm, #ffffff 10mm /* double the stripe height for spacing */
+    );
+    /*doc.setFillColor(0, 0, 255); // Blue*/
+}
+
+.postcard-Yellow {
+    background: repeating-linear-gradient( to bottom, yellow 0, yellow 5mm, /* stripe height */
+    #ffffff 5mm, #ffffff 10mm /* double the stripe height for spacing */
+    );
+    /*doc.setFillColor(255, 255, 0); // Yellow*/
+}
+
+.postcard-Magenta {
+    background: repeating-linear-gradient( to bottom, magenta 0, magenta 5mm, /* stripe height */
+    #ffffff 5mm, #ffffff 10mm /* double the stripe height for spacing */
+    );
+    /*doc.setFillColor(255, 0, 255); // Magenta (Pinkish-purple)*/
+}
+
+.postcard-Cyan {
+    background: repeating-linear-gradient( to bottom, cyan 0, cyan 5mm, /* stripe height */
+    #ffffff 5mm, #ffffff 10mm /* double the stripe height for spacing */
+    );
+    /*doc.setFillColor(0, 255, 255); // Cyan (Light blue) */
+}
+
+.postcard-Orange {
+    background: repeating-linear-gradient( to bottom, orange 0, orange 5mm, /* stripe height */
+    #ffffff 5mm, #ffffff 10mm /* double the stripe height for spacing */
+    );
+    /*doc.setFillColor(255, 165, 0); // Orange*/
+}
+
+.postcard-Purple {
+    background: repeating-linear-gradient( to bottom, purple 0, purple 5mm, /* stripe height */
+    #ffffff 5mm, #ffffff 10mm /* double the stripe height for spacing */
+    );
+    /*doc.setFillColor(128, 0, 128); // Purple */
+}
+
+.postcard-Brown {
+    background: repeating-linear-gradient( to bottom, brown 0, brown 5mm, /* stripe height */
+    #ffffff 5mm, #ffffff 10mm /* double the stripe height for spacing */
+    );
+    /*doc.setFillColor(165, 42, 42); // Brown*/
+}
+
+.postcard-Gold {
+    background: repeating-linear-gradient( to bottom, gold 0, gold 5mm, /* stripe height */
+    #ffffff 5mm, #ffffff 10mm /* double the stripe height for spacing */
+    );
+    /*doc.setFillColor(255, 215, 0); // Gold */
+}
